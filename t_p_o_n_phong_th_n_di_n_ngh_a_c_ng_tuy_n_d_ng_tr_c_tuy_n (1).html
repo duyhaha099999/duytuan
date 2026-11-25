@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cổng Tuyển Dụng Trực Tuyến - Tập đoàn Phong Thần Diễn Nghĩa. Chủ tịch: Nguyễn Tuấn Duy." />
+  <title>Tập đoàn Phong Thần Diễn Nghĩa — Cổng Tuyển Dụng Trực Tuyến</title>
+  <!-- Nạp phông chữ tiếng Việt hiện đại và phông tiêu đề cổ trang -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================
+       1. HỆ THỐNG MÀU CỔ TRANG HUYỀN ẢO & CHIỀU SÂU
+       ========================================= */
+    :root {
+      --bg-base: #060913;
+      --bg-elevated: #0d1324;
+      --bg-card: rgba(15, 22, 42, 0.78);
+      --bg-card-hover: rgba(21, 31, 58, 0.94);
+      --bg-glass: rgba(8, 12, 24, 0.84);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --gold-primary: #eab308;
+      --gold-light: #fde047;
+      --jade-accent: #2dd4bf;
+      --royal-gradient: linear-gradient(135deg, #f59e0b 0%, #eab308 45%, #2dd4bf 100%);
+      --gold-gradient: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fde047 100%);
+      --border-subtle: rgba(234, 179, 8, 0.18);
+      --border-highlight: rgba(234, 179, 8, 0.5);
+      --shadow-depth: 0 24px 50px -12px rgba(0, 0, 0, 0.85), 0 0 1px 1px rgba(253, 224, 71, 0.12) inset;
+      --shadow-card: 0 14px 32px -10px rgba(0, 0, 0, 0.75);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Chế độ Ban Ngày (Light Mode) */
+    [data-theme="light"] {
+      --bg-base: #f8f6f0;
+      --bg-elevated: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+      --bg-glass: rgba(255, 253, 247, 0.88);
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --gold-primary: #b45309;
+      --gold-light: #d97706;
+      --jade-accent: #0d9488;
+      --royal-gradient: linear-gradient(135deg, #b45309 0%, #d97706 50%, #0d9488 100%);
+      --gold-gradient: linear-gradient(135deg, #92400e 0%, #b45309 50%, #d97706 100%);
+      --border-subtle: rgba(180, 83, 9, 0.16);
+      --border-highlight: rgba(180, 83, 9, 0.45);
+      --shadow-depth: 0 20px 45px -15px rgba(120, 53, 15, 0.14);
+      --shadow-card: 0 10px 26px -8px rgba(15, 23, 42, 0.08);
+    }
+
+    /* =========================================
+       2. RESET & BỐ CỤC CHUNG (MOBILE-FIRST)
+       ========================================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.68;
+      overflow-x: hidden;
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    /* Hiệu ứng hào quang linh khí nền */
+    .celestial-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .celestial-bg::before,
+    .celestial-bg::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: 0.22;
+    }
+
+    .celestial-bg::before {
+      width: 420px;
+      height: 420px;
+      background: #eab308;
+      top: -120px;
+      right: -80px;
+    }
+
+    .celestial-bg::after {
+      width: 400px;
+      height: 400px;
+      background: #2dd4bf;
+      bottom: 5%;
+      left: -100px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 52px 0;
+    }
+
+    .mythic-font {
+      font-family: 'Cinzel', 'Be Vietnam Pro', serif;
+    }
+
+    /* =========================================
+       3. STICKY HEADER & NAVIGATION
+       ========================================= */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      background: var(--bg-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-seal {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--gold-gradient);
+      color: #090d16;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.92rem;
+      box-shadow: 0 6px 18px rgba(234, 179, 8, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .icon-btn:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+    }
+
+    .mobile-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 20px 18px;
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-elevated);
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    .mobile-drawer a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      padding: 10px 12px;
+      border-radius: 10px;
+    }
+
+    .mobile-drawer a:hover {
+      background: rgba(234, 179, 8, 0.12);
+      color: var(--gold-primary);
+    }
+
+    /* =========================================
+       4. HERO — GIỚI THIỆU TẬP ĐOÀN
+       ========================================= */
+    .hero {
+      padding-top: 32px;
+    }
+
+    .hero-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-depth);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: var(--royal-gradient);
+    }
+
+    .eyebrow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      background: rgba(234, 179, 8, 0.12);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(1.85rem, 4.8vw, 2.95rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .hero-title span {
+      background: var(--royal-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .btn-gold {
+      background: var(--gold-gradient);
+      color: #090d16;
+      box-shadow: 0 10px 24px -6px rgba(234, 179, 8, 0.45);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px -6px rgba(234, 179, 8, 0.6);
+    }
+
+    .btn-outline {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border-color: var(--border-subtle);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .stat-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--gold-primary);
+    }
+
+    .stat-box span {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* =========================================
+       5. TIÊU ĐỀ MỤC & THÔNG TIN CHỦ TỊCH
+       ========================================= */
+    .section-head {
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-primary);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(234, 179, 8, 0.14);
+      color: var(--gold-primary);
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    /* Thẻ Chủ tịch */
+    .chairman-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      border-radius: var(--radius-lg);
+      padding: 26px 22px;
+      box-shadow: var(--shadow-depth);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .chairman-portrait {
+      width: 136px;
+      height: 136px;
+      border-radius: 30px;
+      padding: 4px;
+      background: var(--royal-gradient);
+      box-shadow: 0 16px 34px -8px rgba(234, 179, 8, 0.42);
+      flex-shrink: 0;
+    }
+
+    .chairman-portrait-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 26px;
+      background: var(--bg-elevated);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .chairman-portrait-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chairman-fallback {
+      font-size: 2.1rem;
+      font-weight: 800;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .chairman-role {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--jade-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .chairman-name {
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .chairman-quote {
+      font-style: italic;
+      color: var(--text-primary);
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--gold-primary);
+      padding: 12px 16px;
+      border-radius: 0 12px 12px 0;
+      margin: 14px 0;
+      font-size: 0.93rem;
+      text-align: left;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .badge {
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--gold-primary);
+    }
+
+    /* =========================================
+       6. BỘ CHỌN CHỨC VỤ THIÊN ĐÌNH (HOVER / CLICK)
+       ========================================= */
+    .role-selector-wrap {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .role-trigger {
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-highlight);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      cursor: pointer;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+    }
+
+    .role-trigger:hover {
+      box-shadow: 0 16px 36px -8px rgba(234, 179, 8, 0.28);
+    }
+
+    .role-trigger-info span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--gold-primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .role-trigger-info strong {
+      font-size: 1.05rem;
+      color: var(--text-primary);
+    }
+
+    .role-dropdown {
+      margin-top: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-highlight);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      box-shadow: var(--shadow-depth);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Tự mở danh sách khi đưa con trỏ vào hoặc khi chạm mở trên điện thoại */
+    .role-selector-wrap:hover .role-dropdown,
+    .role-selector-wrap.active .role-dropdown {
+      max-height: 1600px;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .role-option {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .role-option:hover,
+    .role-option.selected {
+      border-color: var(--gold-primary);
+      background: rgba(234, 179, 8, 0.14);
+      transform: translateX(4px);
+    }
+
+    .role-option-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .role-option-top strong {
+      font-size: 0.98rem;
+      color: var(--text-primary);
+    }
+
+    .role-dept {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(45, 212, 191, 0.14);
+      color: var(--jade-accent);
+    }
+
+    .role-option p {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+    }
+
+    /* =========================================
+       7. BIỂU MẪU NỘP HỒ SƠ TUYỂN DỤNG ONLINE
+       ========================================= */
+    .apply-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-depth);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.15);
+    }
+
+    .notice-pill {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--bg-elevated);
+      border: 1px dashed var(--border-subtle);
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    /* Modal thẻ xác nhận Phong Thần Bảng */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.84);
+      backdrop-filter: blur(8px);
+      display: none;
+      place-items: center;
+      padding: 18px;
+      z-index: 300;
+    }
+
+    .modal-backdrop.open {
+      display: grid;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-highlight);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow-depth);
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-highlight);
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      z-index: 350;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 30px 0 38px;
+      color: var(--text-secondary);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* =========================================
+       8. RESPONSIVE TABLET & DESKTOP
+       ========================================= */
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      #menuToggle {
+        display: none;
+      }
+
+      .hero-banner {
+        padding: 44px;
+      }
+
+      .stats-strip {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .chairman-card {
+        flex-direction: row;
+        text-align: left;
+        padding: 36px;
+        gap: 32px;
+      }
+
+      .badge-row {
+        justify-content: flex-start;
+      }
+
+      .role-dropdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .apply-grid {
+        grid-template-columns: 1fr 1.45fr;
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="celestial-bg"></div>
+
+  <!-- STICKY HEADER -->
+  <header class="header">
+    <div class="container nav-bar">
+      <a href="#top" class="brand">
+        <div class="brand-seal mythic-font">PT</div>
+        <div class="brand-text">
+          <strong>Phong Thần Diễn Nghĩa</strong>
+          <span>Cổng Tuyển Dụng Trực Tuyến</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="#gioi-thieu">Về Tập đoàn</a>
+        <a href="#chu-tich">Chủ tịch</a>
+        <a href="#chuc-vu">Chức vụ tuyển dụng</a>
+        <a href="#nop-ho-so">Nộp hồ sơ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Đổi chế độ Sáng/Tối" title="Đổi giao diện Sáng/Tối">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+        </button>
+        <button class="icon-btn" id="menuToggle" aria-label="Mở menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#gioi-thieu">Về Tập đoàn</a>
+      <a href="#chu-tich">Chủ tịch Nguyễn Tuấn Duy</a>
+      <a href="#chuc-vu">Danh sách chức vụ</a>
+      <a href="#nop-ho-so">Nộp hồ sơ ứng tuyển</a>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-banner">
+        <div class="eyebrow-badge">✨ Chiêu Hiền Nạp Sĩ — Thiên Đình Tuyển Dụng</div>
+        <h1 class="hero-title">
+          Gia nhập <span>Tập đoàn Phong Thần Diễn Nghĩa</span>
+        </h1>
+        <p class="hero-subtitle">
+          Hệ sinh thái vận hành thiên giới hiện đại kết hợp tinh hoa thần thoại phương Đông. Chúng tôi mở rộng cánh cửa chiêu mộ những nhân tài phàm trần có bản lĩnh, tư duy sắc bén và tinh thần sáng tạo để cùng kiến tạo trật tự mới.
+        </p>
+        <div class="hero-cta-row">
+          <a href="#chuc-vu" class="btn btn-gold">Xem danh sách chức vụ</a>
+          <a href="#nop-ho-so" class="btn btn-outline">Nộp hồ sơ trực tuyến</a>
+        </div>
+
+        <div class="stats-strip">
+          <div class="stat-box">
+            <strong>365 Bộ</strong>
+            <span>Ban bệ vận hành thiên giới</span>
+          </div>
+          <div class="stat-box">
+            <strong>24/7</strong>
+            <span>Kết nối linh khí & trực ban</span>
+          </div>
+          <div class="stat-box">
+            <strong>100% Online</strong>
+            <span>Xét duyệt hồ sơ qua Phong Thần Bảng</span>
+          </div>
+          <div class="stat-box">
+            <strong>Đãi ngộ Tiên Đan</strong>
+            <span>Phúc lợi chuẩn Cửu Trùng Thiên</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GIỚI THIỆU TẬP ĐOÀN -->
+    <section id="gioi-thieu">
+      <div class="section-head">
+        <div class="section-kicker">Hồ sơ doanh nghiệp</div>
+        <h2 class="section-title">Về Tập đoàn Phong Thần Diễn Nghĩa</h2>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-icon">🏛️</div>
+          <h3>Tầm nhìn & Quy mô</h3>
+          <p>
+            Được thành lập nhằm chuẩn hóa công tác điều phối thiên cơ, quản trị tài vận, khí tượng và phúc trạch nhân gian theo quy trình minh bạch, chuyên nghiệp.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">⚖️</div>
+          <h3>Văn hóa Phong Thần Bảng</h3>
+          <p>
+            Đề cao công bằng, trọng dụng thực tài bất kể xuất thân. Mọi đóng góp đều được ghi nhận trực tiếp trên Phong Thần Bảng với lộ trình thăng bậc rõ ràng.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🌟</div>
+          <h3>Phúc lợi & Môi trường</h3>
+          <p>
+            Làm việc tại Lăng Tiêu Điện hiện đại, cấp phát pháp bảo công nghệ cao, hưởng chế độ Bàn Đào định kỳ và cơ hội đồng hành cùng các bậc thượng tiên.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- THÔNG TIN CHỦ TỊCH -->
+    <section id="chu-tich">
+      <div class="section-head">
+        <div class="section-kicker">Ban lãnh đạo tối cao</div>
+        <h2 class="section-title">Thông tin Chủ tịch Tập đoàn</h2>
+      </div>
+
+      <div class="chairman-card">
+        <div class="chairman-portrait">
+          <div class="chairman-portrait-inner">
+            <!-- Chèn ảnh chân dung Chủ tịch vào thư mục images/chu-tich.jpg trên GitHub -->
+            <img
+              src="images/chu-tich.jpg"
+              alt="Chủ tịch Nguyễn Tuấn Duy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <span class="chairman-fallback" style="display:none;">NTD</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="chairman-role">Người sáng lập & Đấng Chí Tôn Điều Hành</div>
+          <h3 class="chairman-name">Chủ tịch Nguyễn Tuấn Duy</h3>
+          <p style="color: var(--text-secondary); font-size: 0.94rem;">
+            Là người đứng đầu Tập đoàn Phong Thần Diễn Nghĩa, Chủ tịch Nguyễn Tuấn Duy trực tiếp định hướng chiến lược phát triển Cửu Trùng Thiên, phê duyệt danh sách nhân sự trên Phong Thần Bảng và dẫn dắt các dự án kết nối nhân gian – thiên giới.
+          </p>
+          <blockquote class="chairman-quote">
+            “Thiên giới không thiếu phép thuật, điều chúng ta luôn tìm kiếm là những con người có trí tuệ, bản lĩnh và dám bước lên Phong Thần Bảng để khẳng định giá trị của chính mình.”
+          </blockquote>
+          <div class="badge-row">
+            <span class="badge">Chủ tịch Hội đồng Thiên Đế</span>
+            <span class="badge">Chưởng quản Phong Thần Bảng</span>
+            <span class="badge">Chiến lược Cửu Trùng Thiên</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DANH SÁCH CHỨC VỤ (ĐƯA CON TRỎ VÀO TỰ LIỆT KÊ) -->
+    <section id="chuc-vu">
+      <div class="section-head">
+        <div class="section-kicker">Cơ hội gia nhập</div>
+        <h2 class="section-title">Danh sách chức vụ đang chiêu mộ</h2>
+      </div>
+
+      <div class="role-selector-wrap" id="roleSelectorWrap">
+        <div class="role-trigger" id="roleTrigger" tabindex="0">
+          <div class="role-trigger-info">
+            <span>Di chuột vào đây (hoặc chạm trên điện thoại) để mở bảng chức vụ</span>
+            <strong id="selectedRoleLabel">Chọn chức vụ trên trời bạn muốn ứng tuyển ▾</strong>
+          </div>
+          <span class="badge">8 vị trí đang mở</span>
+        </div>
+
+        <div class="role-dropdown" id="roleDropdown">
+          <div class="role-option" data-role="Ngọc Hoàng Văn Thư (Thư ký Tổng hợp Thiên Đình)">
+            <div class="role-option-top">
+              <strong>1. Ngọc Hoàng Văn Thư</strong>
+              <span class="role-dept">Văn Phòng Thiên Đế</span>
+            </div>
+            <p>Soạn thảo chiếu thư, quản lý công văn Cửu Trùng Thiên và tổng hợp báo cáo trình Chủ tịch Nguyễn Tuấn Duy.</p>
+          </div>
+
+          <div class="role-option" data-role="Thái Bạch Cố Vấn Đối Ngoại (Chuyên viên Truyền thông & Ngoại giao)">
+            <div class="role-option-top">
+              <strong>2. Thái Bạch Cố Vấn Đối Ngoại</strong>
+              <span class="role-dept">Ban Đối Ngoại</span>
+            </div>
+            <p>Kết nối truyền thông giữa Thiên Giới và Nhân Gian, xử lý khủng hoảng và lan tỏa hình ảnh Tập đoàn.</p>
+          </div>
+
+          <div class="role-option" data-role="Tài Thần Quản Trị Tài Chính (Chuyên viên Ngân khố & Phúc lộc)">
+            <div class="role-option-top">
+              <strong>3. Tài Thần Quản Trị Tài Chính</strong>
+              <span class="role-dept">Bộ Tài Vận</span>
+            </div>
+            <p>Hoạch định ngân sách linh thạch, phân bổ tài lộc và tối ưu hiệu suất đầu tư các dự án hạ giới.</p>
+          </div>
+
+          <div class="role-option" data-role="Thiên Lý Nhãn & Thuận Phong Nhĩ (Chuyên viên Dữ liệu & Giám sát)">
+            <div class="role-option-top">
+              <strong>4. Chuyên Viên Thiên Cơ & Dữ Liệu</strong>
+              <span class="role-dept">Ban Công Nghệ Thiên Cơ</span>
+            </div>
+            <p>Theo dõi biến động tam giới theo thời gian thực, phân tích dữ liệu lớn và cảnh báo sớm sự cố.</p>
+          </div>
+
+          <div class="role-option" data-role="Lôi Công – Điện Mẫu Kỹ Thuật (Kỹ sư Năng lượng & Hạ tầng)">
+            <div class="role-option-top">
+              <strong>5. Kỹ Sư Năng Lượng Lôi Điện</strong>
+              <span class="role-dept">Bộ Khí Tượng & Năng Lượng</span>
+            </div>
+            <p>Vận hành lưới điện thiên lôi, điều tiết mưa thuận gió hòa và bảo trì hạ tầng Lăng Tiêu Điện.</p>
+          </div>
+
+          <div class="role-option" data-role="Thiên Bồng Điều Phối An Ninh (Chỉ huy Bảo vệ & Tuần tra)">
+            <div class="role-option-top">
+              <strong>6. Chỉ Huy Điều Phối Thiên Binh</strong>
+              <span class="role-dept">Ban An Ninh Nam Thiên Môn</span>
+            </div>
+            <p>Quản lý an ninh cổng Nam Thiên Môn, điều phối đội ngũ tuần tra và đảm bảo trật tự thiên giới.</p>
+          </div>
+
+          <div class="role-option" data-role="Thái Thượng Dược Sư (Chuyên viên Chăm sóc Sức khỏe & Tiên Đan)">
+            <div class="role-option-top">
+              <strong>7. Chuyên Viên Luyện Đan & Phúc Lợi</strong>
+              <span class="role-dept">Viện Y Dược Thiên Đình</span>
+            </div>
+            <p>Nghiên cứu công thức tiên đan nâng cao thể lực, chăm sóc sức khỏe tinh thần cho toàn thể thần tiên.</p>
+          </div>
+
+          <div class="role-option" data-role="Nguyệt Lão Chuyên Viên Kết Nối (Nhân sự & Gắn kết Cộng đồng)">
+            <div class="role-option-top">
+              <strong>8. Nguyệt Lão Nhân Sự & Gắn Kết</strong>
+              <span class="role-dept">Ban Nhân Sự Phong Thần</span>
+            </div>
+            <p>Tuyển dụng hiền tài, xây dựng văn hóa gắn kết nội bộ và se duyên hợp tác bền vững giữa các bộ phận.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIỂU MẪU NỘP HỒ SƠ ONLINE -->
+    <section id="nop-ho-so">
+      <div class="section-head">
+        <div class="section-kicker">Ứng tuyển trực tuyến</div>
+        <h2 class="section-title">Nộp hồ sơ vào Tập đoàn Phong Thần Diễn Nghĩa</h2>
+      </div>
+
+      <div class="apply-grid">
+        <div class="card">
+          <div class="card-icon">📜</div>
+          <h3>Quy trình xét duyệt online</h3>
+          <p style="margin-bottom: 14px;">
+            1. Chọn chức vụ mong muốn ở danh sách phía trên hoặc ngay trong biểu mẫu.<br />
+            2. Điền đầy đủ thông tin cá nhân, email liên hệ và năng lực nổi bật.<br />
+            3. Bấm gửi hồ sơ để hệ thống ghi danh trực tiếp lên Phong Thần Bảng.
+          </p>
+          <div class="notice-pill">
+            <strong>Lưu ý dự án giải trí:</strong> Đây là cổng tuyển dụng mô phỏng phong cách cổ trang huyền ảo phục vụ mục đích giải trí sáng tạo.
+          </div>
+          <p style="font-size: 0.85rem; color: var(--gold-primary); font-weight: 600;">
+            Email Ban Nhân Sự (Mô phỏng): tuyendung@phongthandiennghia.celestial
+          </p>
+        </div>
+
+        <form class="form-card" id="applicationForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="applicantName">Họ và tên ứng viên *</label>
+              <input type="text" id="applicantName" placeholder="Ví dụ: Trần Minh Khoa" required />
+            </div>
+            <div class="field">
+              <label for="applicantEmail">Email nhận thư mời *</label>
+              <input type="email" id="applicantEmail" placeholder="tenban@gmail.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="applicantPhone">Số điện thoại / Liên lạc *</label>
+              <input type="text" id="applicantPhone" placeholder="Nhập số điện thoại hoặc tên liên hệ" required />
+            </div>
+            <div class="field">
+              <label for="positionSelect">Chức vụ ứng tuyển *</label>
+              <select id="positionSelect" required>
+                <option value="">-- Chọn chức vụ trên trời --</option>
+                <option value="Ngọc Hoàng Văn Thư (Thư ký Tổng hợp Thiên Đình)">Ngọc Hoàng Văn Thư</option>
+                <option value="Thái Bạch Cố Vấn Đối Ngoại (Chuyên viên Truyền thông & Ngoại giao)">Thái Bạch Cố Vấn Đối Ngoại</option>
+                <option value="Tài Thần Quản Trị Tài Chính (Chuyên viên Ngân khố & Phúc lộc)">Tài Thần Quản Trị Tài Chính</option>
+                <option value="Thiên Lý Nhãn & Thuận Phong Nhĩ (Chuyên viên Dữ liệu & Giám sát)">Chuyên Viên Thiên Cơ & Dữ Liệu</option>
+                <option value="Lôi Công – Điện Mẫu Kỹ Thuật (Kỹ sư Năng lượng & Hạ tầng)">Kỹ Sư Năng Lượng Lôi Điện</option>
+                <option value="Thiên Bồng Điều Phối An Ninh (Chỉ huy Bảo vệ & Tuần tra)">Chỉ Huy Điều Phối Thiên Binh</option>
+                <option value="Thái Thượng Dược Sư (Chuyên viên Chăm sóc Sức khỏe & Tiên Đan)">Chuyên Viên Luyện Đan & Phúc Lợi</option>
+                <option value="Nguyệt Lão Chuyên Viên Kết Nối (Nhân sự & Gắn kết Cộng đồng)">Nguyệt Lão Nhân Sự & Gắn Kết</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="applicantSkills">Năng lực nổi bật / Pháp bảo sở trường *</label>
+            <input type="text" id="applicantSkills" placeholder="Ví dụ: Tư duy nhanh, giỏi giao tiếp, thành thạo công nghệ, chịu áp lực tốt..." required />
+          </div>
+
+          <div class="field">
+            <label for="applicantLetter">Thư ngỏ gửi Chủ tịch Nguyễn Tuấn Duy *</label>
+            <textarea id="applicantLetter" rows="4" placeholder="Trình bày lý do bạn muốn gia nhập Tập đoàn Phong Thần Diễn Nghĩa và đóng góp dự kiến..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="width: 100%;">Gửi Hồ Sơ Lên Phong Thần Bảng</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        © 2026 <strong>Tập đoàn Phong Thần Diễn Nghĩa</strong> — Chủ tịch: <strong>Nguyễn Tuấn Duy</strong>. (Dự án web giải trí sáng tạo).
+      </div>
+      <div>
+        <a href="#top" style="color: var(--gold-primary); text-decoration: none; font-weight: 700;">Về đỉnh Cửu Trùng Thiên ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL XÁC NHẬN TIẾP NHẬN HỒ SƠ -->
+  <div class="modal-backdrop" id="resultModal" onclick="closeResultModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div style="font-size: 2.2rem; margin-bottom: 8px;">📜✨</div>
+      <h3 class="mythic-font" style="color: var(--gold-primary); font-size: 1.3rem; margin-bottom: 10px;">
+        ĐÃ GHI DANH PHONG THẦN BẢNG
+      </h3>
+      <div id="resultSummary" style="color: var(--text-secondary); font-size: 0.93rem; text-align: left; background: var(--bg-base); padding: 16px; border-radius: 14px; border: 1px solid var(--border-subtle); margin-bottom: 18px;"></div>
+      <button class="btn btn-gold" onclick="closeResultModal()" style="width: 100%;">Hoàn tất</button>
+    </div>
+  </div>
+
+  <!-- THÔNG BÁO NHANH (TOAST) -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // 1. Chuyển đổi Dark / Light Mode & lưu trạng thái vào localStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+    let savedTheme = 'dark';
+    try {
+      savedTheme = localStorage.getItem('ptdn-theme') || 'dark';
+    } catch (err) {
+      savedTheme = 'dark';
+    }
+    htmlEl.setAttribute('data-theme', savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem('ptdn-theme', next);
+      } catch (err) {
+        // Bỏ qua nếu trình duyệt chặn localStorage
+      }
+      showToast(next === 'dark' ? 'Đã chuyển sang Thiên Giới Đêm Huyền Ảo' : 'Đã chuyển sang Thiên Giới Ban Ngày');
+    });
+
+    // 2. Menu trên điện thoại
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    menuToggle.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('open');
+    });
+
+    mobileDrawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+    });
+
+    // 3. Tương tác mở & chọn chức vụ thiên đình (hover trên máy tính / chạm trên điện thoại)
+    const roleSelectorWrap = document.getElementById('roleSelectorWrap');
+    const roleTrigger = document.getElementById('roleTrigger');
+    const selectedRoleLabel = document.getElementById('selectedRoleLabel');
+    const positionSelect = document.getElementById('positionSelect');
+    const roleOptions = document.querySelectorAll('.role-option');
+
+    roleTrigger.addEventListener('click', () => {
+      roleSelectorWrap.classList.toggle('active');
+    });
+
+    roleOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        roleOptions.forEach(item => item.classList.remove('selected'));
+        opt.classList.add('selected');
+
+        const chosenRole = opt.getAttribute('data-role');
+        selectedRoleLabel.textContent = 'Đã chọn: ' + chosenRole;
+        positionSelect.value = chosenRole;
+        roleSelectorWrap.classList.remove('active');
+
+        showToast('Đã chọn chức vụ: ' + chosenRole.split('(')[0].trim());
+        document.getElementById('nop-ho-so').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // 4. Xử lý nộp hồ sơ giả lập & mở modal xác nhận Phong Thần Bảng
+    const applicationForm = document.getElementById('applicationForm');
+    const resultModal = document.getElementById('resultModal');
+    const resultSummary = document.getElementById('resultSummary');
+
+    applicationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('applicantName').value.trim();
+      const email = document.getElementById('applicantEmail').value.trim();
+      const phone = document.getElementById('applicantPhone').value.trim();
+      const position = positionSelect.value;
+      const skills = document.getElementById('applicantSkills').value.trim();
+
+      resultSummary.innerHTML = `
+        <p style="margin-bottom:8px;">Kính gửi ứng viên <strong style="color:var(--text-primary);">${escapeHtml(name)}</strong>,</p>
+        <p style="margin-bottom:8px;">Hồ sơ ứng tuyển vị trí <strong style="color:var(--gold-primary);">${escapeHtml(position)}</strong> đã được hệ thống chuyển tới Ban Nhân Sự của <strong>Chủ tịch Nguyễn Tuấn Duy</strong>.</p>
+        <p style="margin-bottom:6px;">• <strong>Email phản hồi:</strong> ${escapeHtml(email)}</p>
+        <p style="margin-bottom:6px;">• <strong>Liên lạc:</strong> ${escapeHtml(phone)}</p>
+        <p>• <strong>Sở trường ghi nhận:</strong> ${escapeHtml(skills)}</p>
+      `;
+
+      resultModal.classList.add('open');
+      applicationForm.reset();
+      selectedRoleLabel.textContent = 'Chọn chức vụ trên trời bạn muốn ứng tuyển ▾';
+      roleOptions.forEach(item => item.classList.remove('selected'));
+    });
+
+    function closeResultModal() {
+      resultModal.classList.remove('open');
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+  </script>
+</body>
+</html>
